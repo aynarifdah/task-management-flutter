@@ -53,6 +53,12 @@ class _TaskPageState extends State<TaskPage> {
     }
   }
 
+  void deleteTask(int index) {
+    setState(() {
+      tasks.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( //ini kerangka halaman atau kalo di html itu body
@@ -112,6 +118,11 @@ class _TaskPageState extends State<TaskPage> {
                         tasks[index].isDone = value!;
                       });
                     },
+                    
+                    secondary: IconButton( // ini button hapus task
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () => deleteTask(index),
+                    )
                   );
                 },
               ),
